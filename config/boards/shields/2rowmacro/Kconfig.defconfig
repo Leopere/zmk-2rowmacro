@@ -1,0 +1,6 @@
+if SHIELD_2ROWMACRO
+
+config ZMK_KEYBOARD_NAME
+    default "2rowmacro"
+
+endif
