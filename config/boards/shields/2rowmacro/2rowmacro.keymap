@@ -1,9 +1,58 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-
 / {
     macros {
+//ROW ONE
+//move, copy, offset, rotate, align
+        //ALIGN
+        AL: AL {
+            label = "AL";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp A &kp L>
+                ;
+        };
+        //MOVE
+        MV: MV {
+            label = "MV";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M &kp V>
+                ;
+        };
+        //COPY
+        CO: CO {
+            label = "CO";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp C &kp O>
+                ;
+        };
+        //OFFSET
+        OF: OF {
+            label = "OF";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp O &kp F>
+                ;
+        };
+        //ROTATE
+        RO: RO {
+            label = "RO";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp R &kp O>
+                ;
+        };
+// ROW TWO
+//mirror, trim, join, split
+        //MIRROR
         MM: MM {
             label = "MM";
             compatible = "zmk,behavior-macro";
@@ -12,21 +61,51 @@
                 = <&macro_tap &kp M &kp M>
                 ;
         };
+        //TRIM
+        TR: TR {
+            label = "TR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp T &kp R>
+                ;
+        };
+        //SPLIT ELEMENT
+        SL: SL {
+            label = "SL";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp S &kp L>
+                ;
+        };
+        //SPLIT
+        SPLIT: SPLIT {
+            label = "SPLIT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp S &kp P &kp L &kp I &kp T>
+                ;
+        };
     };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &MM             &kp B       &kp C       &kp D       &mo 1 
-                &kp KP_N1       &kp KP_N2   &kp KP_N3   &kp KP_N4   &kp KP_N5 
+                //move, copy, offset, rotate, align
+                &MV     &CO     &OF     &RO     &AL
+                //mirror, trim, split element, split, layer 2
+                &MM     &TR     &SL   &SPLIT  &mo 1 
 
             >;
         };
         bt_layer {
                     bindings = <
-            &bootloader     &kp LS(LG(N1))                  &kp LS(LG(N2))                  &kp LS(LG(N3))                  &none   
-            &bt BT_SEL 0    &bt BT_SEL 1                    &bt BT_SEL 2                     &bt BT_SEL 3                   &bt BT_CLR
+            &bootloader     &kp LS(LG(N1))                  &kp LS(LG(N2))                  &kp LS(LG(N3))                  &bt BT_CLR   
+            &bt BT_SEL 0    &bt BT_SEL 1                    &bt BT_SEL 2                     &bt BT_SEL 3                   &none
                 
             >;
         };
