@@ -3,13 +3,23 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    macros {
+        MM: MM {
+            label = "MM";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M &kp M>
+                ;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &kp A   &kp B   &kp C   &kp D  &mo 1 
-                &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_N4  &kp KP_N5 
+                &MM             &kp B       &kp C       &kp D       &mo 1 
+                &kp KP_N1       &kp KP_N2   &kp KP_N3   &kp KP_N4   &kp KP_N5 
 
             >;
         };
